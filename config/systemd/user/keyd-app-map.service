@@ -1,0 +1,13 @@
+[Unit]
+Description=keyd-application-mapper
+After=keyd.service
+
+[Service]
+KillMode=process
+ExecStart=/usr/bin/keyd-application-mapper
+Type=simple
+Restart=always
+RestartSec=5s
+
+[Install]
+WantedBy=default.target

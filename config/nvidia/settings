@@ -1,0 +1,19 @@
+#
+# /home/shimauchi/.config/nvidia/settings
+#
+# Configuration file for nvidia-settings - the NVIDIA Settings utility
+# Generated on Tue Jun 20 10:48:15 2023
+#
+
+# ConfigProperties:
+
+RcFileLocale = C
+DisplayStatusBar = Yes
+SliderTextEntries = Yes
+IncludeDisplayNameInConfigFile = No
+UpdateRulesOnProfileNameChange = Yes
+Timer = Thermal_Monitor_(GPU_0),Yes,1000
+Timer = Memory_Used_(GPU_0),Yes,3000
+
+# Attributes:
+

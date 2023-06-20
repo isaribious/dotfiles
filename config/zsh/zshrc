@@ -1,0 +1,166 @@
+# ~/.zshrc
+
+#=============================
+# Language
+#=============================
+#export LANG=C
+#export LANG=ja_JP.UTF-8
+#export LC_CTYPE=ja_JP.UTF-8
+
+#=============================
+# XDG Base Directory
+#=============================
+export XDG_CONFIG_HOME=$HOME/.config
+export XDG_CACHE_HOME=$HOME/.cache
+export XDG_DATA_HOME=$HOME/.local/share
+export XDG_STATE_HOME=$HOME/.local/state
+
+export BAT_CONFIG_PATH=$XDG_CONFIG_HOME/bat/config
+export GNUPGHOME=$XDG_CONFIG_HOME/gnupg
+export GTK2_RC_FILES=$XDG_CONFIG_HOME/gtk-2.0/gtkrc
+export HISTFILE=$XDG_STATE_HOME/zsh/history
+export RIPGREP_CONFIG_PATH=$XDG_CONFIG_HOME/ripgrep/config
+export STARSHIP_CONFIG=$XDG_CONFIG_HOME/starship/config.toml
+export VIMINIT=":source $XDG_CONFIG_HOME"/vim/vimrc
+export WGETRC=$XDG_CONFIG_HOME/wgetrc
+export XAUTHORITY=$XDG_RUNTIME_DIR/Xauthority
+
+# export XINITRC=$XDG_CONFIG_HOME/X11/xinitrc
+# export XSERVERRC=$XDG_CONFIG_HOME/X11/xserverrc
+# export ERRFILE="$XDG_CACHE_HOME/X11/xsession-errors"
+
+#=============================
+# Display
+#=============================
+#export DISPLAY=192.168.2.101:0
+#export DISPLAY=:0
+export WAYLAND_DISPLAY=wayland-1
+
+#=============================
+# Keybind
+#=============================
+bindkey '^B' backward-word
+bindkey '^F' forward-word
+bindkey '^Y' kill-word
+bindkey '^G' kill-line 
+bindkey '^O' reverse-menu-complete
+bindkey '^T' push-line
+bindkey '^H' backward-char
+bindkey '^J' down-line-or-history
+bindkey '^K' up-line-or-history
+bindkey '^L' forward-char
+
+#=============================
+# Completion
+#=============================
+autoload -Uz compinit
+compinit -u -d ~/.cache/zsh/zcompdump-$ZSH_VERSION
+zstyle ':completion:*:default' menu select=3
+
+#=============================
+# Fuzzy finder
+#=============================
+[ -f ${XDG_CONFIG_HOME}/fzf/fzf.zsh ] && source ${XDG_CONFIG_HOME}/fzf/fzf.zsh
+export FZF_DEFAULT_COMMAND='rg --hidden -l ""'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_DEFAULT_OPTS="--height 80% --layout=default --border --no-separator --info=default --preview 'bat --color=always {}' \
+    --bind='ctrl-d:half-page-down' \
+    --bind='ctrl-u:half-page-up' \
+    --bind='ctrl-e:preview-down' \
+    --bind='ctrl-y:preview-up' \
+    --bind='ctrl-f:preview-page-down' \
+    --bind='ctrl-b:preview-page-up' \
+    --bind='ctrl-t:change-preview-window(hidden|)'"
+
+#=============================
+# Prompt
+#=============================
+function set_window_title(){
+    # %n is $USER, %m is $HOST, \e]1 sets the window titlebar, \e]2 sets the tab
+    # precmd () { print -Pn "\e]1;%~\a" ; print -Pn "\e]2;%n@%m %~\a" }
+    # preexec () { print -Pn "\e]1;$1\a" ; print -Pn "\e]2;%n@%m %~ : $1\a" }
+    precmd () { print -Pn "\e]1;%n@%m%~\a" ; print -Pn "\e]2;%~\a" }
+    preexec () { print -Pn "\e]1;%n@%m$1\a" ; print -Pn "\e]2;%~ [$1]\a" }
+}
+
+precmd_functions+=(set_window_title)
+eval "$(starship init zsh)"
+
+#=============================
+# Zsh Auto-Suggestion
+#=============================
+export ZSH_AUTOSUGGEST_STRATEGY=(completion history)
+
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+#=============================
+# Zsh Syntax Highlighting
+#=============================
+# source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+#=============================
+# History
+#=============================
+export HISTSIZE=1000
+export SAVEHIST=10000
+
+#=============================
+# Editor
+#=============================
+export EDITOR='lvim'
+# export NVIM_PYTHON_LOG_FILE=/tmp
+# export NVIM_PYTHON_LOG_LEVEL=DEBUG
+
+#=============================
+# Go
+#=============================
+export GOPATH=~/go
+
+#=============================
+# Path
+#=============================
+PATH=$PATH:~/.local/bin
+PATH=$PATH:${GOPATH}/bin
+export PATH
+
+#=============================
+# Alias
+#=============================
+alias ls='ls -Fv'
+alias la='ls -a'
+alias ll='ls -l'
+alias mv='mv -i'
+alias cp='cp -i'
+alias rm='rm -i'
+alias md='mkdir'
+alias grep='grep --color=auto'
+alias vi='lvim'
+alias py='python3'
+alias h='history'
+alias tree='tree -nF --charset=C'
+alias color='echo; for c in {000..255}; do echo -n "\e[38;5;${c}m $c" ; [ $(($c%16)) -eq 15 ] && echo;done;echo;'
+alias nvidia-settings="nvidia-settings --config=$XDG_CONFIG_HOME/nvidia/settings"
+
+#=============================
+# Alias (Custom)
+#=============================
+close(){
+    pidof xclip | xargs kill -9 &> /dev/null
+    [ $? = 0 ] && exit
+}
+
+#=============================
+# Misc
+#=============================
+# Prevent auto-logout by Ctrl+D
+setopt IGNOREEOF
+
+# Auto 'pushd' command
+setopt auto_pushd
+
+# User file-creation mask
+umask 027
+
+# export NVM_DIR="$HOME/.config/nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

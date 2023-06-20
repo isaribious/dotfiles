@@ -1,0 +1,9 @@
+lvim.builtin.telescope.defaults.mappings.i["<C-j>"] = "move_selection_next"
+lvim.builtin.telescope.defaults.mappings.i["<C-k>"] = "move_selection_previous"
+-- lvim.builtin.telescope.defaults.mappings.i["<C-d>"] = "cycle_history_next"
+-- lvim.builtin.telescope.defaults.mappings.i["<C-u>"] = "cycle_history_prev"
+-- lvim.builtin.telescope.defaults.mappings.i["<CR>"] = "select_tab"
+lvim.builtin.telescope.defaults.mappings.i["<C-l>"] = false
+lvim.builtin.telescope.defaults.mappings.n["<C-j>"] = "move_selection_next"
+lvim.builtin.telescope.defaults.mappings.n["<C-k>"] = "move_selection_previous"
+-- lvim.builtin.telescope.defaults.mappings.n["<CR>"] = "select_tab"

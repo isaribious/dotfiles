@@ -1,0 +1,246 @@
+# ===========================
+#  Prompt Configuration
+# ===========================
+format = """[\
+$username\
+$hostname\
+$time\
+$directory\
+$git_branch\
+$git_commit\
+$git_state\
+$git_metrics\
+$git_status\
+$docker_context\
+$package\
+$golang\
+$lua\
+$nodejs\
+$aws\
+$gcloud\
+$sudo\
+$jobs\
+$status\
+$container\
+$shell
+$character](bold 246)
+"""
+
+# right_format = """
+# """
+
+continuation_prompt = '▶▶ '
+
+# ===========================
+#  Individual Configuration
+# ===========================
+[aws]
+symbol = "  "
+style = "bold 246"
+
+[buf]
+symbol = " "
+style = "bold 246"
+
+[c]
+symbol = " "
+style = "bold 246"
+
+[character]
+success_symbol = '[❯](bold white)'
+error_symbol = '[❯](bold white)'
+
+[conda]
+symbol = " "
+style = "bold 246"
+
+[dart]
+symbol = " "
+style = "bold 246"
+
+[directory]
+read_only = " 󰌾"
+truncation_length = 0
+truncate_to_repo = false
+style = "bold 246"
+
+[docker_context]
+symbol = " "
+style = "bold 246"
+
+[elixir]
+symbol = " "
+style = "bold 246"
+
+[elm]
+symbol = " "
+style = "bold 246"
+
+[fossil_branch]
+symbol = " "
+style = "bold 246"
+
+[git_branch]
+symbol = " "
+style = "bold 067"
+format = '[$symbol$branch]($style) '
+
+[git_status]
+style = 'bold 255'
+format = '([$all_status$ahead_behind]($style) )'
+# format = """([\
+# [$conflicted](bold 174)\
+# [$stashed](bold 140)\
+# [$deleted](bold 235)\
+# [$renamed](bold 255)\
+# [$modified](bold 174)\
+# [$staged](bold 180)\
+# [$untracked](bold 174)\
+# [$ahead_behind](bold 255)\
+# ]($style) )"""
+
+[golang]
+symbol = " "
+style = "bold 246"
+
+[guix_shell]
+symbol = " "
+style = "bold 246"
+
+[haskell]
+symbol = " "
+style = "bold 246"
+
+[haxe]
+symbol = "⌘ "
+style = "bold 246"
+
+[hg_branch]
+symbol = " "
+style = "bold 246"
+
+[hostname]
+ssh_symbol = " "
+ssh_only = false
+style = "bold 144"
+format = '[$hostname]($style) '
+# style_user = "bold dimmed blue"
+
+[java]
+symbol = " "
+style = "bold 246"
+
+[jobs]
+style = "bold dimmed 136"
+
+[julia]
+symbol = " "
+style = "bold 246"
+
+[lua]
+symbol = " "
+style = "bold 246"
+
+[memory_usage]
+symbol = "󰍛 "
+style = "bold 246"
+
+[meson]
+symbol = "󰔷 "
+style = "bold 246"
+
+[nim]
+symbol = "󰆥 "
+style = "bold 246"
+
+[nix_shell]
+symbol = " "
+style = "bold 246"
+
+[nodejs]
+symbol = " "
+style = "bold 246"
+
+[os.symbols]
+Alpaquita = " "
+Alpine = " "
+Amazon = " "
+Android = " "
+Arch = " "
+Artix = " "
+CentOS = " "
+Debian = " "
+DragonFly = " "
+Emscripten = " "
+EndeavourOS = " "
+Fedora = " "
+FreeBSD = " "
+Garuda = "󰛓 "
+Gentoo = " "
+HardenedBSD = "󰞌 "
+Illumos = "󰈸 "
+Linux = " "
+Mabox = " "
+Macos = " "
+Manjaro = " "
+Mariner = " "
+MidnightBSD = " "
+Mint = " "
+NetBSD = " "
+NixOS = " "
+OpenBSD = "󰈺 "
+openSUSE = " "
+OracleLinux = "󰌷 "
+Pop = " "
+Raspbian = " "
+Redhat = " "
+RedHatEnterprise = " "
+Redox = "󰀘 "
+Solus = "󰠳 "
+SUSE = " "
+Ubuntu = " "
+Unknown = " "
+Windows = "󰍲 "
+
+[package]
+symbol = "󰏗 "
+style = "bold 246"
+
+[pijul_channel]
+symbol = "🪺 "
+style = "bold 246"
+
+[python]
+symbol = " "
+style = "bold 246"
+
+[rlang]
+symbol = "󰟔 "
+style = "bold 246"
+
+[ruby]
+symbol = " "
+style = "bold 246"
+
+[rust]
+symbol = " "
+style = "bold 246"
+
+[scala]
+symbol = " "
+style = "bold 246"
+
+[spack]
+symbol = "🅢 "
+style = "bold 246"
+
+[time]
+disabled = false
+# time_format = "%R" # Hour:Minute Format
+style = "bold 246"
+format = '[\($time\)]($style) '
+
+[username]
+show_always = true
+style_user = "bold 144"
+format = '[$user@]($style)'

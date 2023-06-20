@@ -1,0 +1,24 @@
+[user]
+    email = shimauchi.daisuke@bugless.co.jp
+    name = Daisuke Shimauchi
+[color]
+    ui = auto
+[color "status"]
+    added = 180           # yellow
+    changed = 174         # red
+    untracked = 174       # red
+    deleted = 038         # blue
+[color "diff"]
+    new = 151             # green
+    old = 174             # red
+    frag = 242            # light green
+[color "grep"]
+    match = 220           # dark yellow
+    separator = bold 099  # purple
+[merge]
+    ff = false
+[pull]
+    ff = only
+[alias]
+    st = status
+    co = commit
